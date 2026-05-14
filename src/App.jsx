@@ -11,8 +11,51 @@ export default function App() {
   const [count, setCount] = useState(0)
   const [open, setOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [lang, setLang] = useState("en")
   const [name, setName] = useState("")
 const [phone, setPhone] = useState("")
+const translations = {
+
+  en: {
+    home: "Home",
+    services: "Services",
+    fleet: "Fleet",
+    whyus: "Why Us",
+    contact: "Contact",
+    hero: "Premium Moving Services",
+    subtitle:
+  "Fast, secure and professional moving services across the USA.",
+    quote: "Get Started",
+    learn: "Learn More",
+  },
+
+  ru: {
+    home: "Главная",
+    services: "Услуги",
+    fleet: "Автопарк",
+    whyus: "Почему мы",
+    contact: "Контакты",
+    hero: "Премиальные услуги переезда",
+    subtitle:
+  "Быстрые, безопасные и профессиональные услуги переезда по США.",
+    quote: "Начать",
+    learn: "Подробнее",
+  },
+
+  kz: {
+    home: "Басты бет",
+    services: "Қызметтер",
+    fleet: "Көліктер",
+    whyus: "Неге біз",
+    contact: "Байланыс",
+    hero: "Премиум көшу қызметтері",
+    subtitle:
+  "АҚШ бойынша жылдам, қауіпсіз және кәсіби көшу қызметтері.",
+    quote: "Бастау",
+    learn: "Толығырақ",
+  },
+
+}
 
   useEffect(() => {
 
@@ -140,25 +183,50 @@ const [phone, setPhone] = useState("")
 
           <nav className="hidden md:flex gap-8 text-gray-300">
             <a href="#home" className="hover:text-white transition">
-              Home
+            {translations[lang].home}
             </a>
 
             <a href="#services" className="hover:text-white transition">
-              Services
+            {translations[lang].services}
             </a>
 
             <a href="#fleet" className="hover:text-white transition">
-  Fleet
+            {translations[lang].fleet}
 </a>
 
 <a href="#whyus" className="hover:text-white transition">
-  Why Us
+{translations[lang].whyus}
 </a>
 
 <a href="#contact" className="hover:text-white transition">
-  Contact
+{translations[lang].contact}
 </a>
           </nav>
+
+          <div className="hidden md:flex gap-3 text-sm">
+
+  <button
+    onClick={() => setLang("en")}
+    className="hover:text-blue-400 transition"
+  >
+    EN
+  </button>
+
+  <button
+    onClick={() => setLang("ru")}
+    className="hover:text-blue-400 transition"
+  >
+    RU
+  </button>
+
+  <button
+    onClick={() => setLang("kz")}
+    className="hover:text-blue-400 transition"
+  >
+    KZ
+  </button>
+
+</div>
 
           <button
   onClick={() => setMenuOpen(!menuOpen)}
@@ -256,13 +324,19 @@ const [phone, setPhone] = useState("")
 
             <div className="flex gap-4 mt-10">
 
-            <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-7 py-4 rounded-2xl font-semibold hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] transition">
-  Get Started
+            <button
+  onClick={() => setOpen(true)}
+  className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-7 py-4 rounded-2xl font-semibold hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] transition"
+>
+  {translations[lang].quote}
 </button>
 
-              <button className="border border-white/20 px-7 py-4 rounded-2xl hover:bg-white/10 transition">
-                Learn More
-              </button>
+<a
+  href="#services"
+  className="border border-white/20 px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition"
+>
+  {translations[lang].learn}
+</a>
 
             </div>
 
@@ -434,7 +508,7 @@ const [phone, setPhone] = useState("")
   <div className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:scale-105 transition duration-300">
 
     <img
-      src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop"
+      src="https://images.openai.com/static-rsc-4/fFEcfEEuBx9kuKntZdTLowgcNsZ6aAwraRHJDdjdl18ma3arEyfU_DbDT0TzQEbOKRslqszbt-024Se_KV2wnyz_0llhwXMhElK_f0tanAiOzUWnytBBbBKC0BW2_fNfq1npblxJ2BF7n3s6C2L6IqIylFZLBHXPqMW_pCRZvm9kSV1yExBSIGLTVEZ09MOv?purpose=fullsize"
       alt=""
       className="h-64 w-full object-cover"
     />
@@ -466,7 +540,7 @@ const [phone, setPhone] = useState("")
   <div className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:scale-105 transition duration-300">
 
     <img
-      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop"
+      src="https://images.openai.com/static-rsc-4/ctMdBouCd_cvx0JkXnXTlAQ9jz-x-x2915TNO7OEC3w1uYKhSsmpA9eXpWrmbK2hWZuUAAAESQN4YiUubjW80CjrsnGyI238FVrH8nEAzbbFC3oAubVKcy49jepHictBa_6X8hNBmcN4tTh0UXr8Bq6SlKsipHp443IYxe2fPF4?purpose=inline"
       alt=""
       className="h-64 w-full object-cover"
     />
@@ -498,7 +572,7 @@ const [phone, setPhone] = useState("")
   <div className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:scale-105 transition duration-300">
 
     <img
-      src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop"
+      src="https://images.openai.com/static-rsc-4/30KRSfyrOm1CTVVVgThQ0eWug96y7cdy3Ej3MbWiPWBLj7aG7YPwfQL-2bbC17azRajJ2lqziKwRrSV_KWeuuptVnOf6p_jcgGNVLjsuXMpWeKVLxhNJ0FZdHL2qaLKUVzbfMuN3z43GbFntFEUL6iCs4TdF7n5oQv27bL94dQHRyE-DhKiLAxGaAHjO5T-D?purpose=fullsize"
       alt=""
       className="h-64 w-full object-cover"
     />
