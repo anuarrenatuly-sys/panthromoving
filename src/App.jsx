@@ -735,9 +735,16 @@ const [phone, setPhone] = useState("")
     </div>
   )
 }
-
+<a
+  href="https://wa.me/77759449730"
+  target="_blank"
+  className="fixed bottom-6 right-6 z-50 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_40px_rgba(34,197,94,0.6)] hover:scale-110 transition"
+>
+  💬
+</a>
       </div>
 
     </div>
+    
   )
 }
