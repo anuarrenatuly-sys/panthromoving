@@ -213,7 +213,7 @@ rights: "Все права защищены.",
   useEffect(() => {
   
     const lenis = new Lenis({
-      duration: 2,
+      duration: 1.2,
       smoothWheel: true,
       smoothTouch: true,
     })
