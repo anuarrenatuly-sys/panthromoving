@@ -494,7 +494,7 @@ rights: "Барлық құқықтар қорғалған.",
 
 </div>
 
-<div className="flex items-center gap-4">
+<div className="flex items-center gap-2 md:gap-4">
 
   <div className="md:hidden flex gap-2 text-sm">
 
@@ -534,11 +534,11 @@ rights: "Барлық құқықтар қорғалған.",
   </div>
 
   <button
-    onClick={() => setMenuOpen(!menuOpen)}
-    className="md:hidden text-3xl"
-  >
-    ☰
-  </button>
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="md:hidden text-3xl block"
+>
+  ☰
+</button>
 
 </div>
 
