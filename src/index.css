@@ -39,3 +39,6 @@ html {
 
   border-radius: 999px;
 }
+html {
+  scroll-behavior: smooth;
+}
