@@ -481,17 +481,6 @@ rights: "Барлық құқықтар қорғалған.",
   RU
 </button>
 
-<button
-  onClick={() => setLang("kz")}
-  className={`transition px-3 py-1 rounded-xl ${
-    lang === "kz"
-      ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.7)]"
-      : "hover:text-blue-400"
-  }`}
->
-  KZ
-</button>
-
 </div>
 
 <div className="flex items-center gap-2 md:gap-4">
@@ -518,17 +507,6 @@ rights: "Барлық құқықтар қорғалған.",
   }`}
 >
   RU
-</button>
-
-<button
-  onClick={() => setLang("kz")}
-  className={`transition px-3 py-1 rounded-xl ${
-    lang === "kz"
-      ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.7)]"
-      : "hover:text-blue-400"
-  }`}
->
-  KZ
 </button>
 
   </div>
