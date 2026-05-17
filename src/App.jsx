@@ -608,7 +608,7 @@ rights: "Барлық құқықтар қорғалған.",
                 </p>
               </div>
 
-              <div className="ml-4">
+              <div className="ml-3">
   <h3 className="text-4xl font-bold">
     24/7
                 </h3>
