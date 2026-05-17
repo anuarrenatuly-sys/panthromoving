@@ -1014,7 +1014,7 @@ rights: "Барлық құқықтар қорғалған.",
 
   <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 rounded-[40px] p-16 text-center">
 
-    <h2 className="text-6xl font-black mb-6">
+  <h2 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
     {translations[lang].ctaTitle}
     </h2>
 
