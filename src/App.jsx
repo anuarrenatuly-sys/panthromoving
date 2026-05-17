@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import Lenis from "lenis"
+import { FaWhatsapp, FaInstagram } from "react-icons/fa"
 export default function App() {
 
   const [position, setPosition] = useState({
@@ -1056,14 +1057,27 @@ rights: "Барлық құқықтар қорғалған.",
     </div>
   )
 }
-<a
-  href="https://wa.me/77759449730"
-  target="_blank"
-  className="fixed bottom-6 right-6 z-50 bg-green-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-[0_0_40px_rgba(34,197,94,0.6)] hover:scale-110 transition"
->
-  💬
-</a>
       </div>
+
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+
+  <a
+    href="https://wa.me/77477165529"
+    target="_blank"
+    className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:scale-110 transition"
+  >
+    <FaWhatsapp />
+  </a>
+
+  <a
+    href="https://instagram.com/https://www.instagram.com/panthro_moving?igsh=YjNhOWptMW83cXJi"
+    target="_blank"
+    className="bg-gradient-to-r from-pink-500 to-purple-500 w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-[0_0_30px_rgba(236,72,153,0.5)] hover:scale-110 transition"
+  >
+    <FaInstagram />
+  </a>
+
+</div>
 
       </motion.div>
     
