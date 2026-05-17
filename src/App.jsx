@@ -596,11 +596,11 @@ rights: "Барлық құқықтар қорғалған.",
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-12 mt-16 mb-24 max-w-2xl">
+            <div className="grid grid-cols-3 gap-20 mt-16 mb-24 max-w-2xl">
 
-              <div>
-                <h3 className="text-4xl font-bold">
-                {count.toLocaleString()}+
+            <div className="mr-8">
+  <h3 className="text-4xl font-bold">
+    {count.toLocaleString()}+
                 </h3>
 
                 <p className="text-gray-400 mt-2">
@@ -608,9 +608,9 @@ rights: "Барлық құқықтар қорғалған.",
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-4xl font-bold">
-                  24/7
+              <div className="ml-4">
+  <h3 className="text-4xl font-bold">
+    24/7
                 </h3>
 
                 <p className="text-gray-400 mt-2">
