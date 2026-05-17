@@ -1002,7 +1002,7 @@ useEffect(() => {
   </a>
 
   <a
-    href="https://instagram.com/https://www.instagram.com/panthro_moving?igsh=YjNhOWptMW83cXJi"
+    href="https://www.instagram.com/panthro_moving?igsh=YjNhOWptMW83cXJi"
     target="_blank"
     className="bg-gradient-to-r from-pink-500 to-purple-500 w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-[0_0_30px_rgba(236,72,153,0.5)] hover:scale-110 transition"
   >
