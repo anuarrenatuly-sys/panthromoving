@@ -632,7 +632,7 @@ rights: "Барлық құқықтар қорғалған.",
             {/* Stats */}
             <div
   ref={statsRef}
-  className="flex gap-12 mt-16"
+  className="flex gap-12 mt-16 mb-24"
 >
 
               <div>
