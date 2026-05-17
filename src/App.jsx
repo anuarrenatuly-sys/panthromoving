@@ -560,7 +560,7 @@ rights: "Барлық құқықтар қорғалған.",
   initial={{ opacity: 0, y: 80 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 1 }}
-  className="grid lg:grid-cols-2 gap-12 items-center pt-40 pb-32"
+  className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center pt-24 pb-32"
 >
           {/* Left */}
           <div className="max-w-xl">
@@ -596,7 +596,7 @@ rights: "Барлық құқықтар қорғалған.",
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-10 mt-16 mb-24 max-w-2xl">
+            <div className="grid grid-cols-3 gap-10 mt-16 mb-3 max-w-2xl">
 
             <div className="mr-4">
   <h3 className="text-4xl font-bold">
