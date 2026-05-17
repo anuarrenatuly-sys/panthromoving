@@ -28,6 +28,7 @@ const [lang, setLang] = useState(
 )
   const [name, setName] = useState("")
 const [phone, setPhone] = useState("")
+const [date, setDate] = useState("")
 const [pickup, setPickup] = useState("")
 const [destination, setDestination] = useState("")
 const [notes, setNotes] = useState("")
@@ -314,8 +315,7 @@ useEffect(() => {
 
 🚛 Truck: ${truck}
 
-📝 Notes:
-${notes}
+📅 Date: ${date}
 `
   
     const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`
@@ -1022,12 +1022,12 @@ ${notes}
 
 <div
   onClick={(e) => e.stopPropagation()}
-  className="bg-[#111] border border-white/10 rounded-3xl p-10 w-full max-w-md relative"
+  className="bg-[#111] border border-white/10 rounded-3xl p-7 w-full max-w-sm relative"
 >
 
         <button
           onClick={() => setOpen(false)}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white"
+          className="absolute top-4 right-4 text-2xl text-gray-400 hover:text-white hover:scale-110 transition"
         >
           ✕
         </button>
@@ -1047,7 +1047,7 @@ ${notes}
   placeholder={translations[lang].yourName}
   value={name}
   onChange={(e) => setName(e.target.value)}
-  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 outline-none"
 />
 
 <input
@@ -1055,7 +1055,7 @@ ${notes}
   placeholder={translations[lang].phoneNumber}
   value={phone}
   onChange={(e) => setPhone(e.target.value)}
-  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 outline-none"
 />
 
 <input
@@ -1063,7 +1063,7 @@ ${notes}
   placeholder={translations[lang].pickup}
   value={pickup}
   onChange={(e) => setPickup(e.target.value)}
-  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 outline-none"
 />
 
 <input
@@ -1071,13 +1071,13 @@ ${notes}
   placeholder={translations[lang].destination}
   value={destination}
   onChange={(e) => setDestination(e.target.value)}
-  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 outline-none"
 />
 
 <select
   value={truck}
   onChange={(e) => setTruck(e.target.value)}
-  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 outline-none"
 >
   <option value="">
     {translations[lang].selectTruck}
@@ -1097,11 +1097,11 @@ ${notes}
 
 </select>
 
-<textarea
-  placeholder={translations[lang].notes}
-  value={notes}
-  onChange={(e) => setNotes(e.target.value)}
-  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none h-20 resize-none"
+<input
+  type="date"
+  value={date}
+  onChange={(e) => setDate(e.target.value)}
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 outline-none"
 />
 
 <button
