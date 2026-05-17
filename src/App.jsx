@@ -598,7 +598,7 @@ rights: "Барлық құқықтар қорғалған.",
             {/* Stats */}
             <div className="grid grid-cols-3 gap-20 mt-16 mb-24 max-w-2xl">
 
-            <div className="mr-8">
+            <div className="mr-4">
   <h3 className="text-4xl font-bold">
     {count.toLocaleString()}+
                 </h3>
