@@ -30,7 +30,6 @@ const [lang, setLang] = useState(
 const [phone, setPhone] = useState("")
 const [pickup, setPickup] = useState("")
 const [destination, setDestination] = useState("")
-const [date, setDate] = useState("")
 const [notes, setNotes] = useState("")
 const [truck, setTruck] = useState("")
 const statsRef = useRef(null)
@@ -314,7 +313,6 @@ useEffect(() => {
 🏁 Destination: ${destination}
 
 🚛 Truck: ${truck}
-📅 Date: ${date}
 
 📝 Notes:
 ${notes}
@@ -1017,9 +1015,15 @@ ${notes}
 
 {
   open && (
-    <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50">
+    <div
+  onClick={() => setOpen(false)}
+  className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50"
+>
 
-      <div className="bg-[#111] border border-white/10 rounded-3xl p-10 w-full max-w-md relative">
+<div
+  onClick={(e) => e.stopPropagation()}
+  className="bg-[#111] border border-white/10 rounded-3xl p-10 w-full max-w-md relative"
+>
 
         <button
           onClick={() => setOpen(false)}
@@ -1067,13 +1071,6 @@ ${notes}
   placeholder={translations[lang].destination}
   value={destination}
   onChange={(e) => setDestination(e.target.value)}
-  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
-/>
-
-<input
-  type="date"
-  value={date}
-  onChange={(e) => setDate(e.target.value)}
   className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
 />
 
