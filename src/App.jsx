@@ -8,7 +8,7 @@ export default function App() {
     y: 0,
   })
 
-  const [count, setCount] = useState(0)
+  const count = 1000
   const [open, setOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const browserLang = navigator.language.slice(0, 2)
@@ -25,11 +25,6 @@ const [lang, setLang] = useState(
 )
   const [name, setName] = useState("")
 const [phone, setPhone] = useState("")
-const statsRef = useRef(null)
-
-const isInView = useInView(statsRef, {
-  once: true,
-})
 const translations = {
 
   en: {
@@ -300,35 +295,6 @@ rights: "Барлық құқықтар қорғалған.",
   },
 
 }
-
-  useEffect(() => {
-
-    if (!isInView) return
-
-    let start = 0
-  
-    const end = 1000
-  
-    const duration = 2000
-  
-    const increment = end / (duration / 16)
-  
-    const timer = setInterval(() => {
-  
-      start += increment
-  
-      if (start >= end) {
-        start = end
-        clearInterval(timer)
-      }
-  
-      setCount(Math.floor(start))
-  
-    }, 16)
-  
-    return () => clearInterval(timer)
-  
-  }, [isInView])
   
   useEffect(() => {
   
@@ -603,7 +569,7 @@ rights: "Барлық құқықтар қорғалған.",
             {translations[lang].heroTop}
             </p>
 
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight break-words">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05]">
             {translations[lang].hero}
             </h2>
 
@@ -630,10 +596,7 @@ rights: "Барлық құқықтар қорғалған.",
             </div>
 
             {/* Stats */}
-            <div
-  ref={statsRef}
-  className="flex gap-12 mt-16 mb-24"
->
+            <div className="flex gap-12 mt-16 mb-24">
 
               <div>
                 <h3 className="text-4xl font-bold">
