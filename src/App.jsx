@@ -28,6 +28,11 @@ const [lang, setLang] = useState(
 )
   const [name, setName] = useState("")
 const [phone, setPhone] = useState("")
+const [pickup, setPickup] = useState("")
+const [destination, setDestination] = useState("")
+const [date, setDate] = useState("")
+const [notes, setNotes] = useState("")
+const [truck, setTruck] = useState("")
 const statsRef = useRef(null)
 
 const isInView = useInView(statsRef, {
@@ -122,6 +127,11 @@ sendRequest: "Send Request",
 
 heroTop: "FAST & RELIABLE MOVING",
 rights: "All rights reserved.",
+pickup: "Pickup Address",
+destination: "Destination Address",
+selectTruck: "Select Truck",
+notes: "Additional Notes",
+date: "Moving Date",
   },
 
   ru: {
@@ -211,6 +221,11 @@ sendRequest: "Отправить заявку",
 
 heroTop: "БЫСТРЫЙ И НАДЁЖНЫЙ ПЕРЕЕЗД",
 rights: "Все права защищены.",
+pickup: "Адрес загрузки",
+destination: "Адрес доставки",
+selectTruck: "Выберите грузовик",
+notes: "Дополнительная информация",
+date: "Дата переезда",
   },
 
 }
@@ -290,11 +305,20 @@ useEffect(() => {
     const CHAT_ID = "5594857511"
   
     const message = `
-  🚚 New Moving Request
-  
-  👤 Name: ${name}
-  📞 Phone: ${phone}
-  `
+🚚 New Moving Request
+
+👤 Name: ${name}
+📞 Phone: ${phone}
+
+📍 Pickup: ${pickup}
+🏁 Destination: ${destination}
+
+🚛 Truck: ${truck}
+📅 Date: ${date}
+
+📝 Notes:
+${notes}
+`
   
     const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`
   
@@ -749,7 +773,13 @@ useEffect(() => {
         <span>{translations[lang].upto2}</span>
       </div>
 
-      <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition">
+      <button
+  onClick={() => {
+    setTruck("City Moving Van")
+    setOpen(true)
+  }}
+  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition"
+>
       {translations[lang].orderTruck}
       </button>
 
@@ -781,7 +811,13 @@ useEffect(() => {
         <span>{translations[lang].upto3}</span>
       </div>
 
-      <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition">
+      <button
+  onClick={() => {
+    setTruck("Business Cargo Van")
+    setOpen(true)
+  }}
+  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition"
+>
       {translations[lang].orderTruck}
       </button>
 
@@ -813,7 +849,13 @@ useEffect(() => {
         <span>{translations[lang].upto1}</span>
       </div>
 
-      <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition">
+      <button
+  onClick={() => {
+    setTruck("Mini Truck")
+    setOpen(true)
+  }}
+  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition"
+>
       {translations[lang].orderTruck}
       </button>
 
@@ -1012,12 +1054,67 @@ useEffect(() => {
   className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
 />
 
+<input
+  type="text"
+  placeholder={translations[lang].pickup}
+  value={pickup}
+  onChange={(e) => setPickup(e.target.value)}
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+/>
+
+<input
+  type="text"
+  placeholder={translations[lang].destination}
+  value={destination}
+  onChange={(e) => setDestination(e.target.value)}
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+/>
+
+<input
+  type="date"
+  value={date}
+  onChange={(e) => setDate(e.target.value)}
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+/>
+
+<select
+  value={truck}
+  onChange={(e) => setTruck(e.target.value)}
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
+>
+  <option value="">
+    {translations[lang].selectTruck}
+  </option>
+
+  <option>
+    {translations[lang].truck1}
+  </option>
+
+  <option>
+    {translations[lang].truck2}
+  </option>
+
+  <option>
+    {translations[lang].truck3}
+  </option>
+
+</select>
+
+<textarea
+  placeholder={translations[lang].notes}
+  value={notes}
+  onChange={(e) => setNotes(e.target.value)}
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none h-20 resize-none"
+/>
+
 <button
   onClick={sendTelegram}
   className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-bold hover:scale-105 transition"
 >
 {translations[lang].sendRequest}
 </button>
+
+
 
         </div>
 
