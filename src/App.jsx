@@ -210,22 +210,23 @@ rights: "Все права защищены.",
 
 }
   
-  useEffect(() => {
-  
-    const lenis = new Lenis({
-      duration: 1.2,
-      smoothWheel: true,
-      smoothTouch: true,
-    })
-  
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-  
+useEffect(() => {
+
+  if (window.innerWidth < 768) return
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+  })
+
+  function raf(time) {
+    lenis.raf(time)
     requestAnimationFrame(raf)
-  
-  }, [])
+  }
+
+  requestAnimationFrame(raf)
+
+}, [])
 
   useEffect(() => {
   localStorage.setItem("lang", lang)
