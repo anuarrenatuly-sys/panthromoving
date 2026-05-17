@@ -560,16 +560,16 @@ rights: "Барлық құқықтар қорғалған.",
   initial={{ opacity: 0, y: 80 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 1 }}
-  className="grid lg:grid-cols-2 gap-16 items-center pt-40 pb-32"
+  className="grid lg:grid-cols-2 gap-12 items-center pt-40 pb-32"
 >
           {/* Left */}
-          <div>
+          <div className="max-w-xl">
 
             <p className="text-blue-400 font-medium mb-4">
             {translations[lang].heroTop}
             </p>
 
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05]">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
             {translations[lang].hero}
             </h2>
 
@@ -596,7 +596,7 @@ rights: "Барлық құқықтар қорғалған.",
             </div>
 
             {/* Stats */}
-            <div className="flex gap-12 mt-16 mb-24">
+            <div className="grid grid-cols-3 gap-6 mt-16 mb-24 max-w-lg">
 
               <div>
                 <h3 className="text-4xl font-bold">
@@ -633,14 +633,14 @@ rights: "Барлық құқықтар қорғалған.",
           </div>
 
           {/* Right */}
-          <div className="relative">
+          <div className="relative flex justify-center">
 
             <div className="absolute inset-0 w-full h-auto object-contain bg-black object-center"></div>
 
             <img
               src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop"
               alt=""
-              className="relative rounded-3xl shadow-2xl border border-white/10 floating"
+              className="relative rounded-3xl shadow-2xl border border-white/10 w-full max-w-[520px] mx-auto"
             />
 
           </div>
