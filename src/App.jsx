@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import Lenis from "lenis"
 import { FaWhatsapp, FaInstagram } from "react-icons/fa"
+import { FaArrowUp } from "react-icons/fa"
 export default function App() {
 
   const [position, setPosition] = useState({
@@ -12,6 +13,7 @@ export default function App() {
   const count = 1000
   const [open, setOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showTop, setShowTop] = useState(false)
   const browserLang = navigator.language.slice(0, 2)
 
 const defaultLang =
@@ -206,95 +208,6 @@ heroTop: "БЫСТРЫЙ И НАДЁЖНЫЙ ПЕРЕЕЗД",
 rights: "Все права защищены.",
   },
 
-  kz: {
-    home: "Басты бет",
-    services: "Қызметтер",
-    fleet: "Көліктер",
-    whyus: "Неге біз",
-    contact: "Байланыс",
-    hero: "Премиум көшу қызметтері",
-    subtitle:
-  "АҚШ бойынша жылдам, қауіпсіз және кәсіби көшу қызметтері.",
-    quote: "Бастау",
-    learn: "Толығырақ",
-    order: "Тапсырыс беру",
-    clients: "Клиент",
-support: "Қолдау",
-trucks: "Көлік",
-servicesText: "ҚЫЗМЕТТЕР",
-servicesTitle: "Біздің қызметтер",
-apartment: "Пәтер көшіру",
-office: "Кеңсе көшіру",
-packing: "Қаптау",
-delivery: "Жедел жеткізу",
-apartmentText:
-  "Кәсіби жүк тасушылармен жылдам әрі қауіпсіз пәтер көшіру.",
-
-officeText:
-  "Бизнеске арналған толық кеңсе көшіру қызметтері.",
-
-packingText:
-  "Кәсіби қаптау және қауіпсіз тасымалдау.",
-
-deliveryText:
-  "Тәулік бойы жедел жүк жеткізу.",
-  fleetText: "БІЗДІҢ КӨЛІКТЕР",
-fleetTitle: "Көшу көліктері",
-
-truck1: "Қалалық фургон",
-truck2: "Жүк фургоны",
-truck3: "Шағын жүк көлігі",
-
-truck1Text: "Пәтер көшіруге өте ыңғайлы",
-truck2Text: "Кеңсе көшіруге тамаша",
-truck3Text: "Жылдам қалалық жүк тасымалы",
-upto2: "2 тоннаға дейін",
-upto3: "3 тоннаға дейін",
-upto1: "1 тоннаға дейін",
-
-orderTruck: "Тапсырыс беру",
-processText: "ҚАЛАЙ ЖҰМЫС ІСТЕЙДІ",
-processTitle: "Қарапайым көшу процесі",
-
-step1: "Өтініш қалдырыңыз",
-step2: "Біз сізбен хабарласамыз",
-step3: "Жүк тасушылар келеді",
-step4: "Қауіпсіз жеткізу",
-whyText: "НЕГЕ БІЗ",
-whyTitle: "Көшу енді оңай",
-
-fast: "Жылдам жеткізу",
-safe: "Қауіпсіз тасымал",
-support24: "24/7 қолдау",
-
-fastText:
-  "Уақытылы және тиімді көшу қызметі.",
-
-safeText:
-  "Сіздің жүгіңіз қауіпсіз және кәсіби тасымалданады.",
-
-supportText:
-  "Біз әрқашан шұғыл тасымалға дайынбыз.",
-
-  ctaTitle: "Көшуге дайынсыз ба?",
-ctaText:
-  "Бүгін тапсырыс беріп, кәсіби тасымал алыңыз.",
-
-contactUs: "Байланысу",
-
-modalTitle: "Бізбен байланыс",
-modalText:
-  "Өтініш қалдырыңыз, біз сізге хабарласамыз.",
-
-yourName: "Атыңыз",
-phoneNumber: "Телефон нөмірі",
-
-sendRequest: "Өтініш жіберу",
-
-heroTop: "ЖЫЛДАМ ЖӘНЕ СЕНІМДІ КӨШУ",
-rights: "Барлық құқықтар қорғалған.",
-  },
-
 }
   
   useEffect(() => {
@@ -317,6 +230,24 @@ rights: "Барлық құқықтар қорғалған.",
   useEffect(() => {
   localStorage.setItem("lang", lang)
 }, [lang])
+
+useEffect(() => {
+
+  const handleScroll = () => {
+
+    if (window.scrollY > 600) {
+      setShowTop(true)
+    } else {
+      setShowTop(false)
+    }
+
+  }
+
+  window.addEventListener("scroll", handleScroll)
+
+  return () => window.removeEventListener("scroll", handleScroll)
+
+}, [])
 
   const sendTelegram = async () => {
 
@@ -1078,6 +1009,22 @@ rights: "Барлық құқықтар қорғалған.",
   </a>
 
 </div>
+
+{
+  showTop && (
+    <button
+      onClick={() =>
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        })
+      }
+      className="fixed bottom-6 left-6 z-50 bg-white/10 backdrop-blur-xl border border-white/10 w-12 h-12 rounded-full flex items-center justify-center text-white text-lg hover:scale-110 transition"
+    >
+      <FaArrowUp />
+    </button>
+  )
+}
 
       </motion.div>
     
