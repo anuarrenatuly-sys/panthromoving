@@ -603,7 +603,7 @@ rights: "Барлық құқықтар қорғалған.",
             {translations[lang].heroTop}
             </p>
 
-            <h2 className="text-6xl lg:text-7xl font-black leading-tight">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight break-words">
             {translations[lang].hero}
             </h2>
 
@@ -672,7 +672,7 @@ rights: "Барлық құқықтар қорғалған.",
           {/* Right */}
           <div className="relative">
 
-            <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full"></div>
+            <div className="absolute inset-0 w-full h-full object-cover object-center"></div>
 
             <img
               src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop"
@@ -1014,7 +1014,7 @@ rights: "Барлық құқықтар қорғалған.",
 
   <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 rounded-[40px] p-16 text-center">
 
-  <h2 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
     {translations[lang].ctaTitle}
     </h2>
 
