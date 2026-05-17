@@ -10,7 +10,7 @@ export default function App() {
     y: 0,
   })
 
-  const count = 1000
+  const [count, setCount] = useState(0)
   const [open, setOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [showTop, setShowTop] = useState(false)
@@ -28,6 +28,11 @@ const [lang, setLang] = useState(
 )
   const [name, setName] = useState("")
 const [phone, setPhone] = useState("")
+const statsRef = useRef(null)
+
+const isInView = useInView(statsRef, {
+  once: true,
+})
 const translations = {
 
   en: {
@@ -249,6 +254,35 @@ useEffect(() => {
   return () => window.removeEventListener("scroll", handleScroll)
 
 }, [])
+
+useEffect(() => {
+
+  if (!isInView) return
+
+  let start = 0
+
+  const end = 1000
+
+  const duration = 1500
+
+  const increment = end / (duration / 16)
+
+  const timer = setInterval(() => {
+
+    start += increment
+
+    if (start >= end) {
+      start = end
+      clearInterval(timer)
+    }
+
+    setCount(Math.floor(start))
+
+  }, 16)
+
+  return () => clearInterval(timer)
+
+}, [isInView])
 
   const sendTelegram = async () => {
 
@@ -529,7 +563,10 @@ useEffect(() => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-10 mt-16 mb-3 max-w-2xl">
+            <div
+  ref={statsRef}
+  className="grid grid-cols-3 gap-10 mt-16 mb-8 max-w-3xl"
+>
 
             <div className="mr-4">
   <h3 className="text-4xl font-bold">
