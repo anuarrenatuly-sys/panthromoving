@@ -1,5 +1,5 @@
-import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { motion, useInView } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
 import Lenis from "lenis"
 export default function App() {
 
@@ -11,9 +11,25 @@ export default function App() {
   const [count, setCount] = useState(0)
   const [open, setOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [lang, setLang] = useState("en")
+  const browserLang = navigator.language.slice(0, 2)
+
+const defaultLang =
+  browserLang === "ru"
+    ? "ru"
+    : browserLang === "kk"
+    ? "kz"
+    : "en"
+
+const [lang, setLang] = useState(
+  localStorage.getItem("lang") || defaultLang
+)
   const [name, setName] = useState("")
 const [phone, setPhone] = useState("")
+const statsRef = useRef(null)
+
+const isInView = useInView(statsRef, {
+  once: true,
+})
 const translations = {
 
   en: {
@@ -27,6 +43,82 @@ const translations = {
   "Fast, secure and professional moving services across the USA.",
     quote: "Get Started",
     learn: "Learn More",
+    order: "Order Now",
+    clients: "Clients",
+support: "Support",
+trucks: "Trucks",
+servicesText: "OUR SERVICES",
+servicesTitle: "What We Offer",
+apartment: "Apartment Moving",
+office: "Office Relocation",
+packing: "Packing",
+delivery: "Express Delivery",
+apartmentText:
+  "Fast and safe apartment relocation with professional movers.",
+
+officeText:
+  "Complete office moving services for businesses.",
+
+packingText:
+  "Professional packing materials and secure transportation.",
+
+deliveryText:
+  "Urgent cargo delivery available 24 hours a day.",
+  fleetText: "OUR FLEET",
+fleetTitle: "Moving Vehicles",
+
+truck1: "City Moving Van",
+truck2: "Business Cargo Van",
+truck3: "Mini Truck",
+
+truck1Text: "Perfect for apartment moving",
+truck2Text: "Great for office relocation",
+truck3Text: "Fast city cargo transportation",
+upto2: "Up to 2 Tons",
+upto3: "Up to 3 Tons",
+upto1: "Up to 1 Ton",
+
+orderTruck: "Order Truck",
+processText: "HOW IT WORKS",
+processTitle: "Simple Moving Process",
+
+step1: "Leave Request",
+step2: "We Contact You",
+step3: "Movers Arrive",
+step4: "Safe Delivery",
+whyText: "WHY CHOOSE US",
+whyTitle: "Moving Made Simple",
+
+fast: "Fast Delivery",
+safe: "Safe Transport",
+support24: "24/7 Support",
+
+fastText:
+  "Quick and efficient moving with on-time transportation.",
+
+safeText:
+  "Your cargo is protected and handled professionally.",
+
+supportText:
+  "We are always available for urgent transportation.",
+
+  ctaTitle: "Ready To Move?",
+ctaText:
+  "Book your moving service today and get professional transportation.",
+
+contactUs: "Contact Us",
+
+modalTitle: "Contact Us",
+modalText:
+  "Leave your request and we’ll call you back.",
+
+yourName: "Your Name",
+phoneNumber: "Phone Number",
+
+sendRequest: "Send Request",
+
+heroTop: "FAST & RELIABLE MOVING",
+rights: "All rights reserved.",
   },
 
   ru: {
@@ -40,6 +132,82 @@ const translations = {
   "Быстрые, безопасные и профессиональные услуги переезда по США.",
     quote: "Начать",
     learn: "Подробнее",
+    order: "Заказать",
+    clients: "Клиентов",
+support: "Поддержка",
+trucks: "Грузовиков",
+servicesText: "НАШИ УСЛУГИ",
+servicesTitle: "Что мы предлагаем",
+apartment: "Квартирный переезд",
+office: "Офисный переезд",
+packing: "Упаковка",
+delivery: "Экспресс доставка",
+apartmentText:
+  "Быстрый и безопасный квартирный переезд с профессиональными грузчиками.",
+
+officeText:
+  "Полный комплекс офисного переезда для бизнеса.",
+
+packingText:
+  "Профессиональная упаковка и безопасная транспортировка.",
+
+deliveryText:
+  "Срочная доставка грузов 24 часа в сутки.",
+  fleetText: "НАШ АВТОПАРК",
+fleetTitle: "Транспорт для переезда",
+
+truck1: "Городской фургон",
+truck2: "Грузовой фургон",
+truck3: "Мини грузовик",
+
+truck1Text: "Идеально для квартирного переезда",
+truck2Text: "Отлично подходит для офисного переезда",
+truck3Text: "Быстрая городская грузоперевозка",
+upto2: "До 2 тонн",
+upto3: "До 3 тонн",
+upto1: "До 1 тонны",
+
+orderTruck: "Заказать",
+processText: "КАК ЭТО РАБОТАЕТ",
+processTitle: "Простой процесс переезда",
+
+step1: "Оставьте заявку",
+step2: "Мы свяжемся с вами",
+step3: "Приедут грузчики",
+step4: "Безопасная доставка",
+whyText: "ПОЧЕМУ МЫ",
+whyTitle: "Переезд стал проще",
+
+fast: "Быстрая доставка",
+safe: "Безопасная перевозка",
+support24: "Поддержка 24/7",
+
+fastText:
+  "Быстрый и эффективный переезд с доставкой вовремя.",
+
+safeText:
+  "Ваш груз защищён и перевозится профессионально.",
+
+supportText:
+  "Мы всегда доступны для срочных перевозок.",
+
+  ctaTitle: "Готовы к переезду?",
+ctaText:
+  "Закажите переезд сегодня и получите профессиональную перевозку.",
+
+contactUs: "Связаться",
+
+modalTitle: "Связаться с нами",
+modalText:
+  "Оставьте заявку и мы вам перезвоним.",
+
+yourName: "Ваше имя",
+phoneNumber: "Номер телефона",
+
+sendRequest: "Отправить заявку",
+
+heroTop: "БЫСТРЫЙ И НАДЁЖНЫЙ ПЕРЕЕЗД",
+rights: "Все права защищены.",
   },
 
   kz: {
@@ -53,11 +221,89 @@ const translations = {
   "АҚШ бойынша жылдам, қауіпсіз және кәсіби көшу қызметтері.",
     quote: "Бастау",
     learn: "Толығырақ",
+    order: "Тапсырыс беру",
+    clients: "Клиент",
+support: "Қолдау",
+trucks: "Көлік",
+servicesText: "ҚЫЗМЕТТЕР",
+servicesTitle: "Біздің қызметтер",
+apartment: "Пәтер көшіру",
+office: "Кеңсе көшіру",
+packing: "Қаптау",
+delivery: "Жедел жеткізу",
+apartmentText:
+  "Кәсіби жүк тасушылармен жылдам әрі қауіпсіз пәтер көшіру.",
+
+officeText:
+  "Бизнеске арналған толық кеңсе көшіру қызметтері.",
+
+packingText:
+  "Кәсіби қаптау және қауіпсіз тасымалдау.",
+
+deliveryText:
+  "Тәулік бойы жедел жүк жеткізу.",
+  fleetText: "БІЗДІҢ КӨЛІКТЕР",
+fleetTitle: "Көшу көліктері",
+
+truck1: "Қалалық фургон",
+truck2: "Жүк фургоны",
+truck3: "Шағын жүк көлігі",
+
+truck1Text: "Пәтер көшіруге өте ыңғайлы",
+truck2Text: "Кеңсе көшіруге тамаша",
+truck3Text: "Жылдам қалалық жүк тасымалы",
+upto2: "2 тоннаға дейін",
+upto3: "3 тоннаға дейін",
+upto1: "1 тоннаға дейін",
+
+orderTruck: "Тапсырыс беру",
+processText: "ҚАЛАЙ ЖҰМЫС ІСТЕЙДІ",
+processTitle: "Қарапайым көшу процесі",
+
+step1: "Өтініш қалдырыңыз",
+step2: "Біз сізбен хабарласамыз",
+step3: "Жүк тасушылар келеді",
+step4: "Қауіпсіз жеткізу",
+whyText: "НЕГЕ БІЗ",
+whyTitle: "Көшу енді оңай",
+
+fast: "Жылдам жеткізу",
+safe: "Қауіпсіз тасымал",
+support24: "24/7 қолдау",
+
+fastText:
+  "Уақытылы және тиімді көшу қызметі.",
+
+safeText:
+  "Сіздің жүгіңіз қауіпсіз және кәсіби тасымалданады.",
+
+supportText:
+  "Біз әрқашан шұғыл тасымалға дайынбыз.",
+
+  ctaTitle: "Көшуге дайынсыз ба?",
+ctaText:
+  "Бүгін тапсырыс беріп, кәсіби тасымал алыңыз.",
+
+contactUs: "Байланысу",
+
+modalTitle: "Бізбен байланыс",
+modalText:
+  "Өтініш қалдырыңыз, біз сізге хабарласамыз.",
+
+yourName: "Атыңыз",
+phoneNumber: "Телефон нөмірі",
+
+sendRequest: "Өтініш жіберу",
+
+heroTop: "ЖЫЛДАМ ЖӘНЕ СЕНІМДІ КӨШУ",
+rights: "Барлық құқықтар қорғалған.",
   },
 
 }
 
   useEffect(() => {
+
+    if (!isInView) return
 
     let start = 0
   
@@ -82,7 +328,7 @@ const translations = {
   
     return () => clearInterval(timer)
   
-  }, [])
+  }, [isInView])
   
   useEffect(() => {
   
@@ -100,6 +346,10 @@ const translations = {
     requestAnimationFrame(raf)
   
   }, [])
+
+  useEffect(() => {
+  localStorage.setItem("lang", lang)
+}, [lang])
 
   const sendTelegram = async () => {
 
@@ -144,10 +394,14 @@ const translations = {
     })
   }
   return (
-    <div
+    <motion.div
+  key={lang}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.4 }}
   onMouseMove={handleMouseMove}
   className="bg-black text-white min-h-screen overflow-hidden relative"
-  >
+>
     <div
   className="pointer-events-none fixed inset-0 z-30 transition duration-300"
   style={{
@@ -205,39 +459,95 @@ const translations = {
 
           <div className="hidden md:flex gap-3 text-sm">
 
-  <button
-    onClick={() => setLang("en")}
-    className="hover:text-blue-400 transition"
-  >
-    EN
-  </button>
+          <button
+  onClick={() => setLang("en")}
+  className={`transition px-3 py-1 rounded-xl ${
+    lang === "en"
+      ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.7)]"
+      : "hover:text-blue-400"
+  }`}
+>
+  EN
+</button>
+
+<button
+  onClick={() => setLang("ru")}
+  className={`transition px-3 py-1 rounded-xl ${
+    lang === "ru"
+      ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.7)]"
+      : "hover:text-blue-400"
+  }`}
+>
+  RU
+</button>
+
+<button
+  onClick={() => setLang("kz")}
+  className={`transition px-3 py-1 rounded-xl ${
+    lang === "kz"
+      ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.7)]"
+      : "hover:text-blue-400"
+  }`}
+>
+  KZ
+</button>
+
+</div>
+
+<div className="flex items-center gap-4">
+
+  <div className="md:hidden flex gap-2 text-sm">
 
   <button
-    onClick={() => setLang("ru")}
-    className="hover:text-blue-400 transition"
-  >
-    RU
-  </button>
+  onClick={() => setLang("en")}
+  className={`transition px-3 py-1 rounded-xl ${
+    lang === "en"
+      ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.7)]"
+      : "hover:text-blue-400"
+  }`}
+>
+  EN
+</button>
+
+<button
+  onClick={() => setLang("ru")}
+  className={`transition px-3 py-1 rounded-xl ${
+    lang === "ru"
+      ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.7)]"
+      : "hover:text-blue-400"
+  }`}
+>
+  RU
+</button>
+
+<button
+  onClick={() => setLang("kz")}
+  className={`transition px-3 py-1 rounded-xl ${
+    lang === "kz"
+      ? "bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.7)]"
+      : "hover:text-blue-400"
+  }`}
+>
+  KZ
+</button>
+
+  </div>
 
   <button
-    onClick={() => setLang("kz")}
-    className="hover:text-blue-400 transition"
+    onClick={() => setMenuOpen(!menuOpen)}
+    className="md:hidden text-3xl"
   >
-    KZ
+    ☰
   </button>
 
 </div>
 
-          <button
-  onClick={() => setMenuOpen(!menuOpen)}
-  className="md:hidden text-3xl"
+<button
+  onClick={() => setOpen(true)}
+  className="hidden md:block bg-white text-black px-5 py-2 rounded-xl font-semibold hover:scale-105 transition"
 >
-  ☰
+  {translations[lang].order}
 </button>
-
-<button className="hidden md:block bg-white text-black px-5 py-2 rounded-xl font-semibold hover:scale-105 transition">
-            Order Now
-          </button>
 
         </header>
 
@@ -252,7 +562,7 @@ const translations = {
           onClick={() => setMenuOpen(false)}
           className="hover:text-blue-400 transition"
         >
-          Home
+          {translations[lang].home}
         </a>
 
         <a
@@ -260,7 +570,7 @@ const translations = {
           onClick={() => setMenuOpen(false)}
           className="hover:text-blue-400 transition"
         >
-          Services
+          {translations[lang].services}
         </a>
 
         <a
@@ -268,7 +578,7 @@ const translations = {
           onClick={() => setMenuOpen(false)}
           className="hover:text-blue-400 transition"
         >
-          Fleet
+          {translations[lang].fleet}
         </a>
 
         <a
@@ -276,7 +586,7 @@ const translations = {
           onClick={() => setMenuOpen(false)}
           className="hover:text-blue-400 transition"
         >
-          Why Us
+          {translations[lang].whyus}
         </a>
 
         <a
@@ -284,7 +594,7 @@ const translations = {
           onClick={() => setMenuOpen(false)}
           className="hover:text-blue-400 transition"
         >
-          Contact
+          {translations[lang].contact}
         </a>
 
       </div>
@@ -305,21 +615,15 @@ const translations = {
           <div>
 
             <p className="text-blue-400 font-medium mb-4">
-              FAST & RELIABLE MOVING
+            {translations[lang].heroTop}
             </p>
 
             <h2 className="text-6xl lg:text-7xl font-black leading-tight">
-              Premium
-              <br />
-              Moving
-              <br />
-              Services
+            {translations[lang].hero}
             </h2>
 
             <p className="mt-8 text-gray-400 text-lg max-w-xl leading-relaxed">
-              Apartment moving, office relocation,
-              cargo delivery and professional movers
-              available 24/7.
+            {translations[lang].subtitle}
             </p>
 
             <div className="flex gap-4 mt-10">
@@ -341,7 +645,10 @@ const translations = {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-12 mt-16">
+            <div
+  ref={statsRef}
+  className="flex gap-12 mt-16"
+>
 
               <div>
                 <h3 className="text-4xl font-bold">
@@ -349,7 +656,7 @@ const translations = {
                 </h3>
 
                 <p className="text-gray-400 mt-2">
-                  Clients
+                {translations[lang].clients}
                 </p>
               </div>
 
@@ -359,7 +666,7 @@ const translations = {
                 </h3>
 
                 <p className="text-gray-400 mt-2">
-                  Support
+                {translations[lang].support}
                 </p>
               </div>
 
@@ -369,7 +676,7 @@ const translations = {
                 </h3>
 
                 <p className="text-gray-400 mt-2">
-                  Trucks
+                {translations[lang].trucks}
                 </p>
               </div>
 
@@ -398,11 +705,11 @@ const translations = {
         <div className="text-center mb-20">
 
 <p className="text-blue-400 font-medium mb-4">
-  OUR SERVICES
+{translations[lang].servicesText}
 </p>
 
 <h2 className="text-5xl font-bold">
-  What We Offer
+{translations[lang].servicesTitle}
 </h2>
 
 </div>
@@ -417,12 +724,11 @@ const translations = {
   </div>
 
   <h3 className="text-2xl font-bold mb-4">
-    Apartment Moving
+  {translations[lang].apartment}
   </h3>
 
   <p className="text-gray-400 leading-relaxed">
-    Fast and safe apartment relocation
-    with professional movers.
+  {translations[lang].apartmentText}
   </p>
 
 </div>
@@ -435,12 +741,11 @@ const translations = {
   </div>
 
   <h3 className="text-2xl font-bold mb-4">
-    Office Relocation
+  {translations[lang].office}
   </h3>
 
   <p className="text-gray-400 leading-relaxed">
-    Complete office moving services
-    for businesses.
+  {translations[lang].officeText}
   </p>
 
 </div>
@@ -453,12 +758,11 @@ const translations = {
   </div>
 
   <h3 className="text-2xl font-bold mb-4">
-    Packing
+  {translations[lang].packing}
   </h3>
 
   <p className="text-gray-400 leading-relaxed">
-    Professional packing materials
-    and secure transportation.
+  {translations[lang].packingText}
   </p>
 
 </div>
@@ -471,12 +775,11 @@ const translations = {
   </div>
 
   <h3 className="text-2xl font-bold mb-4">
-    Express Delivery
+  {translations[lang].delivery}
   </h3>
 
   <p className="text-gray-400 leading-relaxed">
-    Urgent cargo delivery available
-    24 hours a day.
+  {translations[lang].deliveryText}
   </p>
 
 </div>
@@ -493,11 +796,11 @@ const translations = {
 <div className="text-center mb-20">
 
   <p className="text-blue-400 font-medium mb-4">
-    OUR FLEET
+  {translations[lang].fleetText}
   </p>
 
   <h2 className="text-5xl font-bold">
-    Moving Vehicles
+  {translations[lang].fleetTitle}
   </h2>
 
 </div>
@@ -516,20 +819,20 @@ const translations = {
     <div className="p-8">
 
       <h3 className="text-3xl font-bold mb-4">
-        Gazelle 3M
+      {translations[lang].truck1}
       </h3>
 
       <p className="text-gray-400 mb-6">
-        Perfect for apartment moving
+      {translations[lang].truck1Text}
       </p>
 
       <div className="flex justify-between text-gray-300 mb-8">
         <span>12m³</span>
-        <span>Up to 2 Tons</span>
+        <span>{translations[lang].upto2}</span>
       </div>
 
       <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition">
-        Order Truck
+      {translations[lang].orderTruck}
       </button>
 
     </div>
@@ -548,20 +851,20 @@ const translations = {
     <div className="p-8">
 
       <h3 className="text-3xl font-bold mb-4">
-        Gazelle 4M
+      {translations[lang].truck2}
       </h3>
 
       <p className="text-gray-400 mb-6">
-        Great for office relocation
+      {translations[lang].truck2Text}
       </p>
 
       <div className="flex justify-between text-gray-300 mb-8">
         <span>18m³</span>
-        <span>Up to 3 Tons</span>
+        <span>{translations[lang].upto3}</span>
       </div>
 
       <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition">
-        Order Truck
+      {translations[lang].orderTruck}
       </button>
 
     </div>
@@ -580,20 +883,20 @@ const translations = {
     <div className="p-8">
 
       <h3 className="text-3xl font-bold mb-4">
-        Mini Truck
+      {translations[lang].truck3}
       </h3>
 
       <p className="text-gray-400 mb-6">
-        Fast city cargo transportation
+      {translations[lang].truck3Text}
       </p>
 
       <div className="flex justify-between text-gray-300 mb-8">
         <span>8m³</span>
-        <span>Up to 1 Ton</span>
+        <span>{translations[lang].upto1}</span>
       </div>
 
       <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-semibold hover:scale-105 transition">
-        Order Truck
+      {translations[lang].orderTruck}
       </button>
 
     </div>
@@ -611,11 +914,11 @@ const translations = {
   <div className="text-center mb-20">
 
     <p className="text-blue-400 font-medium mb-4">
-      HOW IT WORKS
+    {translations[lang].processText}
     </p>
 
     <h2 className="text-5xl font-bold">
-      Simple Moving Process
+    {translations[lang].processTitle}
     </h2>
 
   </div>
@@ -623,10 +926,10 @@ const translations = {
   <div className="grid lg:grid-cols-4 gap-8">
 
     {[
-      "Leave Request",
-      "We Contact You",
-      "Movers Arrive",
-      "Safe Delivery",
+      translations[lang].step1,
+      translations[lang].step2,
+      translations[lang].step3,
+      translations[lang].step4,
     ].map((step, index) => (
 
       <div
@@ -657,11 +960,11 @@ const translations = {
   <div className="text-center mb-20">
 
     <p className="text-blue-400 font-medium mb-4">
-      WHY CHOOSE US
+    {translations[lang].whyText}
     </p>
 
     <h2 className="text-5xl font-bold">
-      Moving Made Simple
+    {translations[lang].whyTitle}
     </h2>
 
   </div>
@@ -675,12 +978,11 @@ const translations = {
       </div>
 
       <h3 className="text-3xl font-bold mb-4">
-        Fast Delivery
+      {translations[lang].fast}
       </h3>
 
       <p className="text-gray-400 leading-relaxed">
-        Quick and efficient moving
-        with on-time transportation.
+      {translations[lang].fastText}
       </p>
 
     </div>
@@ -692,12 +994,11 @@ const translations = {
       </div>
 
       <h3 className="text-3xl font-bold mb-4">
-        Safe Transport
+      {translations[lang].safe}
       </h3>
 
       <p className="text-gray-400 leading-relaxed">
-        Your cargo is protected and
-        handled professionally.
+      {translations[lang].safeText}
       </p>
 
     </div>
@@ -709,12 +1010,11 @@ const translations = {
       </div>
 
       <h3 className="text-3xl font-bold mb-4">
-        24/7 Support
+      {translations[lang].support24}
       </h3>
 
       <p className="text-gray-400 leading-relaxed">
-        We are always available
-        for urgent transportation.
+      {translations[lang].supportText}
       </p>
 
     </div>
@@ -730,19 +1030,18 @@ const translations = {
   <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 rounded-[40px] p-16 text-center">
 
     <h2 className="text-6xl font-black mb-6">
-      Ready To Move?
+    {translations[lang].ctaTitle}
     </h2>
 
     <p className="text-gray-300 text-xl mb-10 max-w-2xl mx-auto">
-      Book your moving service today
-      and get professional transportation.
+    {translations[lang].ctaText}
     </p>
 
     <button
   onClick={() => setOpen(true)}
   className="bg-gradient-to-r from-blue-500 to-purple-500 px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition"
 >
-  Contact Us
+{translations[lang].contactUs}
 </button>
 
   </div>
@@ -753,7 +1052,7 @@ const translations = {
 
 
 <footer className="border-t border-white/10 py-10 text-center text-gray-400">
-© 2026 Panthromoving. All rights reserved.
+© 2026 Panthromoving. {translations[lang].rights}
 </footer>
 
 {
@@ -770,18 +1069,18 @@ const translations = {
         </button>
 
         <h2 className="text-4xl font-bold mb-4">
-          Contact Us
+        {translations[lang].modalTitle}
         </h2>
 
         <p className="text-gray-400 mb-8">
-          Leave your request and we’ll call you back.
+        {translations[lang].modalText}
         </p>
 
         <div className="space-y-4">
 
         <input
   type="text"
-  placeholder="Your Name"
+  placeholder={translations[lang].yourName}
   value={name}
   onChange={(e) => setName(e.target.value)}
   className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
@@ -789,7 +1088,7 @@ const translations = {
 
 <input
   type="text"
-  placeholder="Phone Number"
+  placeholder={translations[lang].phoneNumber}
   value={phone}
   onChange={(e) => setPhone(e.target.value)}
   className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none"
@@ -799,7 +1098,7 @@ const translations = {
   onClick={sendTelegram}
   className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-bold hover:scale-105 transition"
 >
-  Send Request
+{translations[lang].sendRequest}
 </button>
 
         </div>
@@ -818,7 +1117,7 @@ const translations = {
 </a>
       </div>
 
-    </div>
+      </motion.div>
     
   )
 }
