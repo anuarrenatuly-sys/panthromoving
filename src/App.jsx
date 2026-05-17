@@ -31,7 +31,6 @@ const [phone, setPhone] = useState("")
 const [date, setDate] = useState("")
 const [pickup, setPickup] = useState("")
 const [destination, setDestination] = useState("")
-const [notes, setNotes] = useState("")
 const [truck, setTruck] = useState("")
 const statsRef = useRef(null)
 
@@ -1032,7 +1031,7 @@ useEffect(() => {
           ✕
         </button>
 
-        <h2 className="text-4xl font-bold mb-4">
+        <h2 className="text-3xl font-bold mb-4">
         {translations[lang].modalTitle}
         </h2>
 
@@ -1101,7 +1100,7 @@ useEffect(() => {
   type="date"
   value={date}
   onChange={(e) => setDate(e.target.value)}
-  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 outline-none"
+  className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-sm outline-none"
 />
 
 <button
