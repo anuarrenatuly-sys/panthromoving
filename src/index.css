@@ -42,3 +42,8 @@ html {
 html {
   scroll-behavior: smooth;
 }
+html,
+body,
+#root {
+  background: black;
+}
