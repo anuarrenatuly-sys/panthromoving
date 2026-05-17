@@ -672,7 +672,7 @@ rights: "Барлық құқықтар қорғалған.",
           {/* Right */}
           <div className="relative">
 
-            <div className="absolute inset-0 w-full h-full object-cover object-center"></div>
+            <div className="absolute inset-0 w-full h-auto object-contain bg-black object-center"></div>
 
             <img
               src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop"
