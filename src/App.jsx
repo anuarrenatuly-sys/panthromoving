@@ -334,8 +334,6 @@ useEffect(() => {
     
     console.log(data)
   
-    alert("Request sent!")
-  
     setName("")
     setPhone("")
     setOpen(false)
