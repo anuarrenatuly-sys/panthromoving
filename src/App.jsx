@@ -1100,7 +1100,7 @@ useEffect(() => {
   type="date"
   value={date}
   onChange={(e) => setDate(e.target.value)}
-  className="w-[70%] bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-sm outline-none"
+  className="w-[85%] bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-sm outline-none"
 />
 
 <button
