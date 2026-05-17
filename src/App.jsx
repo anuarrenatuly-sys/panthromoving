@@ -531,6 +531,12 @@ rights: "Барлық құқықтар қорғалған.",
 
         {
   menuOpen && (
+    <>
+    
+      <div
+        onClick={() => setMenuOpen(false)}
+        className="fixed inset-0 bg-black/40 z-30"
+      />
     <div className="md:hidden fixed top-24 left-6 right-6 bg-black/95 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 z-40">
 
       <div className="flex flex-col gap-6 text-xl">
@@ -578,6 +584,7 @@ rights: "Барлық құқықтар қорғалған.",
       </div>
 
     </div>
+    </>
   )
 }
 
