@@ -649,7 +649,7 @@ rights: "Барлық құқықтар қорғалған.",
 
         {/* Services */}
 
-        <section id="services" className="pb-32">
+        <section id="services" className="pb-20">
         <div className="text-center mb-20">
 
 <p className="text-blue-400 font-medium mb-4">
@@ -739,7 +739,7 @@ rights: "Барлық құқықтар қорғалған.",
 
           {/* Fleet */}
 
-          <section id="fleet" className="pb-40">
+          <section id="fleet" className="pb-24">
 
 <div className="text-center mb-20">
 
@@ -857,7 +857,7 @@ rights: "Барлық құқықтар қорғалған.",
 
 {/* Process */}
 
-<section className="pb-40">
+<section className="pb-24">
 
   <div className="text-center mb-20">
 
@@ -903,7 +903,7 @@ rights: "Барлық құқықтар қорғалған.",
 
 {/* Why Choose Us */}
 
-<section id="whyus" className="pb-40">
+<section id="whyus" className="pb-24">
 
   <div className="text-center mb-20">
 
@@ -973,7 +973,7 @@ rights: "Барлық құқықтар қорғалған.",
 
 {/* CTA */}
 
-<section id="contact" className="pb-40">
+<section id="contact" className="pb-24">
 
   <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 rounded-[40px] p-16 text-center">
 
