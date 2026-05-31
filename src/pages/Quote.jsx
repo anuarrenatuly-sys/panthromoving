@@ -84,14 +84,6 @@ export default function Quote() {
     },
     "FyFhP5PC8-Uylg9-q"
     )
-    
-    } catch (error) {
-    
-    console.log(error)
-    
-    }
-    
-    }
 
     setSuccess(true)
 
@@ -110,6 +102,14 @@ message: "",
 setTimeout(() => {
 setSuccess(false)
 }, 3000)
+    
+    } catch (error) {
+    
+    console.log(error)
+    
+    }
+    
+    }
 
   const translations = {
     en: {
