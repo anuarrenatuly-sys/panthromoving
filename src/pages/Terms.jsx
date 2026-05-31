@@ -119,11 +119,15 @@ export default function Terms() {
 
   return (
 
-    <div className="min-h-screen bg-black text-white overflow-hidden relative">
+    <div className="min-h-screen bg-[#050816] text-white overflow-hidden relative">
 
-      <div className="absolute -top-40 left-0 w-[700px] h-[700px] bg-blue-500/30 blur-[160px] rounded-full"></div>
+<div className="absolute top-0 left-0 w-[700px] h-[700px] bg-blue-500/25 blur-[180px] rounded-full animate-pulse"></div>
 
-      <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-purple-500/20 blur-[160px] rounded-full"></div>
+<div className="absolute top-0 right-0 w-[700px] h-[700px] bg-purple-500/20 blur-[180px] rounded-full animate-pulse"></div>
+
+<div className="absolute bottom-0 left-1/3 w-[600px] h-[600px] bg-cyan-500/10 blur-[180px] rounded-full animate-pulse"></div>
+
+<div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-pink-500/10 blur-[160px] rounded-full animate-pulse"></div>
 
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full"></div>
 
