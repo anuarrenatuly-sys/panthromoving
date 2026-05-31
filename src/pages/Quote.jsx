@@ -7,7 +7,8 @@ import {
     Phone,
     Video,
     MessageCircle,
-    House
+    House,
+    CheckCircle2
     } from "lucide-react"
 
 export default function Quote() {
@@ -91,6 +92,24 @@ export default function Quote() {
     }
     
     }
+
+    setSuccess(true)
+
+setForm({
+from: "",
+to: "",
+date: "",
+size: "",
+email: "",
+phone: "",
+firstName: "",
+lastName: "",
+message: "",
+})
+
+setTimeout(() => {
+setSuccess(false)
+}, 3000)
 
   const translations = {
     en: {
@@ -291,6 +310,7 @@ const [contactMethod, setContactMethod] = useState(
     localStorage.getItem("contactMethod") || ""
     )
     const [error, setError] = useState("")
+    const [success, setSuccess] = useState(false)
   return (
 
     <div className="min-h-screen bg-[#050816] text-white overflow-hidden relative">
@@ -814,7 +834,39 @@ className="text-blue-400 hover:text-blue-300 transition underline"
 
         </motion.div>
 
-      
+        {success && (
+
+<div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm px-6">
+
+<div className="bg-[#0B1120] border border-white/10 rounded-[32px] p-10 max-w-md w-full text-center shadow-2xl">
+
+<div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto mb-6">
+
+<CheckCircle2 size={42} className="text-green-400" />
+
+</div>
+
+<h3 className="text-3xl font-black mb-4">
+
+{lang === "ru"
+? "Заявка отправлена!"
+: "Request Sent!"}
+
+</h3>
+
+<p className="text-gray-400 leading-relaxed">
+
+{lang === "ru"
+? "Наша команда скоро свяжется с вами."
+: "Our team will contact you shortly."}
+
+</p>
+
+</div>
+
+</div>
+
+)}
 
         <footer className="border-t border-white/10 mt-32 pt-24 pb-10 px-6">
         <div className="max-w-7xl mx-auto">
