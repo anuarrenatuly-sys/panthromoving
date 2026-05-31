@@ -36,6 +36,20 @@ export default function Quote() {
   const handleSubmit = async (e) => {
 
     e.preventDefault()
+    if (
+        !form.from ||
+        !form.to ||
+        !form.date ||
+        !form.size ||
+        !form.email ||
+        !form.phone ||
+        !form.firstName ||
+        !form.lastName
+        ) {
+        
+        return
+        
+        }
     
     try {
     
@@ -62,21 +76,9 @@ export default function Quote() {
     "FyFhP5PC8-Uylg9-q"
     )
     
-    alert(
-    lang === "ru"
-    ? "Заявка успешно отправлена!"
-    : "Request sent successfully!"
-    )
-    
     } catch (error) {
     
     console.log(error)
-    
-    alert(
-    lang === "ru"
-    ? "Ошибка отправки"
-    : "Failed to send request"
-    )
     
     }
     
