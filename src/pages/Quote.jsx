@@ -47,9 +47,17 @@ export default function Quote() {
         !form.lastName
         ) {
         
+        setError(
+        lang === "ru"
+        ? "Пожалуйста заполните все обязательные поля"
+        : "Please fill in all required fields"
+        )
+        
         return
         
         }
+        
+        setError("")
     
     try {
     
@@ -282,6 +290,7 @@ const [lang, setLang] = useState(
 const [contactMethod, setContactMethod] = useState(
     localStorage.getItem("contactMethod") || ""
     )
+    const [error, setError] = useState("")
   return (
 
     <div className="min-h-screen bg-[#050816] text-white overflow-hidden relative">
@@ -763,6 +772,14 @@ contactMethod === item.id
             />
 
           </div>
+
+          {error && (
+
+<p className="text-red-400 mt-6 font-medium">
+{error}
+</p>
+
+)}
 
           <button
   className="mt-10 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition"
