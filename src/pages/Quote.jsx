@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import emailjs from "@emailjs/browser"
 import { FaWhatsapp, FaInstagram, FaPhone, FaArrowUp } from "react-icons/fa"
 import {
     Phone,
@@ -31,6 +32,55 @@ export default function Quote() {
       [e.target.name]: e.target.value,
     })
   }
+
+  const handleSubmit = async (e) => {
+
+    e.preventDefault()
+    
+    try {
+    
+    await emailjs.send(
+    "service_940o23a",
+    "template_7ovbooa",
+    {
+    name: `${form.firstName} ${form.lastName}`,
+    phone: form.phone,
+    email: form.email,
+    moveType: form.size,
+    contactMethod: contactMethod,
+    details: `
+    From: ${form.from}
+    
+    To: ${form.to}
+    
+    Date: ${form.date}
+    
+    Message:
+    ${form.message}
+    `,
+    },
+    "FyFhP5PC8-Uylg9-q"
+    )
+    
+    alert(
+    lang === "ru"
+    ? "Заявка успешно отправлена!"
+    : "Request sent successfully!"
+    )
+    
+    } catch (error) {
+    
+    console.log(error)
+    
+    alert(
+    lang === "ru"
+    ? "Ошибка отправки"
+    : "Failed to send request"
+    )
+    
+    }
+    
+    }
 
   const translations = {
     en: {
@@ -451,6 +501,8 @@ PANTHROMOVING
           transition={{ duration: 0.7 }}
         >
 
+<form onSubmit={handleSubmit}>
+
 <div className="max-w-5xl mx-auto bg-white/5 border border-white/10 rounded-[40px] p-8 md:p-14 backdrop-blur-2xl">
 
 <div className="mb-14">
@@ -738,6 +790,8 @@ className="text-blue-400 hover:text-blue-300 transition underline"
 </div>
 
 </div>
+
+</form>
 
         </motion.div>
 
