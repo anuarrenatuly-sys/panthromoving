@@ -628,7 +628,7 @@ contactMethod === item.id
                 name="date"
                 value={form.date}
                 onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 text-white rounded-2xl px-4 py-4 text-xs md:text-base outline-none [color-scheme:dark]"
+                className="w-full bg-white/5 border border-white/10 text-white rounded-2xl px-4 py-3 outline-none [color-scheme:dark]"
               />
             </div>
 
