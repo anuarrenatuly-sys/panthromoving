@@ -452,7 +452,7 @@ className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-c
 </a>
 
 <a
-href="https://instagram.com"
+href="https://www.instagram.com/panthro_moving?igsh=YjNhOWptMW83cXJi"
 target="_blank"
 rel="noopener noreferrer"
 className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-pink-500 transition"
