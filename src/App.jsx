@@ -6,6 +6,9 @@ import {
   FaInstagram,
   FaPhone,
   FaArrowUp,
+  FaGoogle,
+  FaYelp,
+  FaFacebookF,
 } from "react-icons/fa"
 import { FaCheckCircle  } from "react-icons/fa"
 import { Routes, Route } from "react-router-dom"
@@ -18,16 +21,23 @@ import Packing from "./pages/Packing"
 import Assembly from "./pages/Assembly"
 import Furniture from "./pages/Furniture"
 import Insurance from "./pages/Insurance"
+import LocalMoving from "./pages/LocalMoving"
 import {
   Package,
   Trash2,
   ShieldCheck,
   Wrench,
   Phone,
-Video,
-MessageCircle,
-House
-  } from "lucide-react"
+  Video,
+  MessageCircle,
+  House,
+  Star,
+  Building2,
+  PackageCheck,
+  Users,
+  Sofa,
+  Clock3,
+} from "lucide-react"
 export default function App() {
 
   const [position, setPosition] = useState({
@@ -308,6 +318,63 @@ onsiteText:
 requestVisit: "Request Visit",
 onsiteText:
   "We’ll visit your location and provide a personalized moving estimate.",
+  quoteHeroTop: "FREE MOVING ESTIMATE",
+
+quoteHeroTitle:
+  "Move Smarter With Panthromoving",
+
+quoteHeroText:
+  "Licensed, insured and trusted movers across the USA.",
+
+movingFrom: "Moving From Address",
+
+movingTo: "Moving To Address",
+
+movingDate: "Moving Date",
+
+quoteButton: "GET FREE QUOTE",
+
+licensed: "Licensed & Insured",
+
+sameDay: "White Glove Service",
+
+noFees: "No Hidden Fees",
+reviewsTitle: "Top Rated Movers",
+
+reviewsSubtitle:
+  "Across All Review Platforms",
+
+reviewsCount1: "355+ reviews",
+
+reviewsCount2: "211+ reviews",
+
+reviewsCount3: "189+ reviews",
+
+reviewsCount4: "140+ reviews",
+
+localMoving: "Local Residential Moving",
+localMovingText:
+  "Professional apartment and house moving services.",
+
+longDistance: "Long Distance Moving",
+longDistanceText:
+  "Safe interstate and cross-country moving services.",
+
+officeMoving: "Office Relocation",
+officeMovingText:
+  "Commercial and office moving with minimal downtime.",
+
+smallMoves: "Small Moves",
+smallMovesText:
+  "Perfect for apartments, studios and single-item transportation.",
+
+  lastMinuteMoving: "Last Minute Moving",
+  lastMinuteMovingText:
+  "Fast response and professional moving services when time matters most.",
+
+furnitureMoving: "Furniture Moving",
+furnitureMovingText:
+  "Safe transportation of heavy and valuable furniture.",
   },
 
   ru: {
@@ -552,9 +619,103 @@ onsiteText:
   "Мы приедем к вам и подготовим персональный расчёт переезда.",
 
 requestVisit: "Запросить выезд",
+quoteHeroTop: "БЕСПЛАТНЫЙ РАСЧЁТ",
+
+quoteHeroTitle:
+  "Переезжайте проще вместе с Panthromoving",
+
+quoteHeroText:
+  "Лицензированные и застрахованные перевозчики по всей территории США.",
+
+movingFrom: "Адрес отправления",
+
+movingTo: "Адрес назначения",
+
+movingDate: "Дата переезда",
+
+quoteButton: "ПОЛУЧИТЬ РАСЧЁТ",
+
+licensed: "Лицензия и страховка",
+
+sameDay: "Премиальный сервис",
+
+noFees: "Без скрытых платежей",
+reviewsTitle: "Лучшие перевозчики",
+
+reviewsSubtitle:
+  "На всех платформах отзывов",
+
+reviewsCount1: "13 000+ отзывов",
+
+reviewsCount2: "2 600+ отзывов",
+
+reviewsCount3: "12 000+ отзывов",
+
+reviewsCount4: "200+ отзывов",
+localMoving: "Квартирный переезд",
+localMovingText:
+  "Профессиональный переезд квартир и частных домов.",
+
+longDistance: "Междугородний переезд",
+longDistanceText:
+  "Безопасные перевозки между штатами и на дальние расстояния.",
+
+officeMoving: "Офисный переезд",
+officeMovingText:
+  "Коммерческий и офисный переезд с минимальными простоями.",
+
+smallMoves: "Небольшие переезды",
+smallMovesText:
+  "Идеально для студий, квартир и перевозки отдельных предметов.",
+
+  lastMinuteMoving: "Срочный переезд",
+  lastMinuteMovingText:
+  "Быстрая организация переезда, когда время имеет решающее значение.",
+
+furnitureMoving: "Перевозка мебели",
+furnitureMovingText:
+  "Безопасная перевозка крупной и ценной мебели.",
   },
 
 }
+const movingServices = [
+  {
+  title: translations[lang].localMoving,
+  text: translations[lang].localMovingText,
+  icon: House,
+  link: "/local-moving"
+  },
+  {
+  title: translations[lang].longDistance,
+  text: translations[lang].longDistanceText,
+  icon: Package,
+  link: "/long-distance"
+  },
+  {
+  title: translations[lang].officeMoving,
+  text: translations[lang].officeMovingText,
+  icon: Building2,
+  link: "/office-relocation"
+  },
+  {
+  title: translations[lang].smallMoves,
+  text: translations[lang].smallMovesText,
+  icon: PackageCheck,
+  link: "/small-moves"
+  },
+  {
+  title: translations[lang].lastMinuteMoving,
+  text: translations[lang].lastMinuteMovingText,
+  icon: Clock3,
+  link: "/last-minute-moving"
+  },
+  {
+  title: translations[lang].furnitureMoving,
+  text: translations[lang].furnitureMovingText,
+  icon: Sofa,
+  link: "/furniture-moving"
+  }
+  ]
   
 useEffect(() => {
 
@@ -685,6 +846,8 @@ useEffect(() => {
 <Route path="/privacy" element={<Privacy />} />
 
 <Route path="/terms" element={<Terms />} />
+
+<Route path="/local-moving" element={<LocalMoving />} />
 
     <Route
       path="/"
@@ -819,12 +982,26 @@ useEffect(() => {
 
 </div>
 
+
+
+<div className="hidden md:flex items-center gap-3">
+
+<a
+  href="tel:+16672278199"
+  className="bg-blue-500 text-white px-5 py-2 rounded-xl font-semibold hover:scale-105 transition flex items-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+>
+  <FaPhone />
+  +1 (667) 227-8199
+</a>
+
 <button
   onClick={() => navigate("/quote")}
-  className="hidden md:block bg-white text-black px-5 py-2 rounded-xl font-semibold hover:scale-105 transition"
+  className="bg-white text-black px-5 py-2 rounded-xl font-semibold hover:scale-105 transition"
 >
   {translations[lang].order}
 </button>
+
+</div>
 
         </header>
 
@@ -906,73 +1083,69 @@ useEffect(() => {
           {/* Left */}
           <div className="max-w-xl">
 
-            <p className="text-blue-400 font-medium mb-4">
-            {translations[lang].heroTop}
-            </p>
+          <div className="max-w-xl w-full">
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-            {translations[lang].hero}
-            </h2>
+<p className="text-blue-400 font-bold mb-4 tracking-wider">
+  {translations[lang].quoteHeroTop}
+</p>
 
-            <p className="mt-8 text-gray-400 text-lg max-w-xl leading-relaxed">
-            {translations[lang].subtitle}
-            </p>
+<h2 className="text-5xl md:text-6xl font-black leading-tight mb-6">
+  {translations[lang].quoteHeroTitle}
+</h2>
 
-            <div className="flex gap-4 mt-10">
+<p className="text-gray-400 text-lg mb-8">
+  {translations[lang].quoteHeroText}
+</p>
 
-            <button
+<div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-[32px] p-6">
+
+<div className="space-y-4">
+
+<input
+  type="text"
+  placeholder={translations[lang].movingFrom}
+  className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 outline-none"
+/>
+
+<input
+  type="text"
+  placeholder={translations[lang].movingTo}
+  className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 outline-none"
+/>
+
+<input
+  type="date"
+  className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 outline-none"
+/>
+
+<button
   onClick={() => navigate("/quote")}
-  className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-7 py-4 rounded-2xl font-semibold hover:scale-105 hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] transition"
+  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-4 rounded-2xl font-bold text-lg hover:scale-[1.02] transition"
 >
-  {translations[lang].quote}
+  {translations[lang].quoteButton}
 </button>
 
-<a
-  href="#services"
-  className="border border-white/20 px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition"
->
-  {translations[lang].learn}
-</a>
+</div>
 
-            </div>
+<div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-400">
 
-            {/* Stats */}
-            <div
-  ref={statsRef}
-  className="grid grid-cols-3 gap-10 mt-16 mb-8 max-w-3xl"
->
+<span>
+✓ {translations[lang].licensed}
+</span>
 
-            <div className="mr-4">
-  <h3 className="text-4xl font-bold">
-    {count.toLocaleString()}+
-                </h3>
+<span>
+✓ {translations[lang].sameDay}
+</span>
 
-                <p className="text-gray-400 mt-2">
-                {translations[lang].clients}
-                </p>
-              </div>
+<span>
+✓ {translations[lang].noFees}
+</span>
 
-              <div className="ml-4">
-  <h3 className="text-4xl font-bold">
-  5+
-                </h3>
+</div>
 
-                <p className="text-gray-400 mt-2">
-                {translations[lang].support}
-                </p>
-              </div>
+</div>
 
-              <div>
-                <h3 className="text-4xl font-bold">
-                  4
-                </h3>
-
-                <p className="text-gray-400 mt-2">
-                {translations[lang].trucks}
-                </p>
-              </div>
-
-            </div>
+</div>
 
           </div>
 
@@ -981,19 +1154,145 @@ useEffect(() => {
 
             <div className="absolute inset-0 w-full h-auto object-contain bg-black object-center"></div>
 
-            <img
-              src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop"
-              alt="Moving Service"
-              className="relative rounded-3xl shadow-2xl border border-white/10 w-full max-w-[520px] mx-auto"
-            />
+            <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="relative rounded-3xl shadow-2xl border border-white/10 w-full max-w-[380px] mx-auto object-cover"
+>
+  <source src="/moving1.mp4" type="video/mp4" />
+</video>
 
           </div>
 
           </motion.section>
 
+          {/* Review Bar */}
+
+<div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+
+<div className="bg-white/5 backdrop-blur-xl border-y border-white/10 py-8">
+
+<div className="max-w-7xl mx-auto px-6">
+
+<div className="flex flex-wrap justify-between items-center gap-8">
+
+<div>
+
+<h3 className="text-white text-2xl font-black">
+{translations[lang].reviewsTitle}
+</h3>
+
+<p className="text-blue-400 font-bold">
+{translations[lang].reviewsSubtitle}
+</p>
+
+</div>
+
+<div className="flex items-center gap-4">
+
+<img
+  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+  alt="Google"
+  className="w-[52px] h-[52px]"
+/>
+
+<div>
+
+<h3 className="text-white text-3xl font-black">
+4.5/5
+</h3>
+
+<p className="text-gray-400">
+{translations[lang].reviewsCount1}
+</p>
+
+</div>
+
+</div>
+
+<div className="flex items-center gap-4">
+
+<FaYelp
+size={52}
+className="text-[#FF1A1A]"
+/>
+
+<div>
+
+<h3 className="text-white text-3xl font-black">
+4.7/5
+</h3>
+
+<p className="text-gray-400">
+{translations[lang].reviewsCount2}
+</p>
+
+</div>
+
+</div>
+
+<div className="flex items-center gap-4">
+
+<Star
+  size={52}
+  fill="#00B67A"
+  color="#00B67A"
+/>
+
+<div>
+
+<h3 className="text-white text-3xl font-black">
+4.9/5
+</h3>
+
+<p className="text-gray-400">
+{translations[lang].reviewsCount3}
+</p>
+
+</div>
+
+</div>
+
+<div className="flex items-center gap-4">
+
+<div className="w-12 h-12 overflow-hidden rounded-full">
+  <img
+    src="/th.png"
+    alt="Thumbtack"
+    className="w-full h-full object-cover scale-125"
+  />
+</div>
+
+<div>
+
+<h3 className="text-white text-3xl font-black">
+4.8/5
+</h3>
+
+<p className="text-gray-400">
+{translations[lang].reviewsCount4}
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
         {/* Services */}
 
-        <section id="services" className="pb-20">
+        <section
+  id="services"
+  className="pt-24 pb-20"
+>
         <div className="text-center mb-20">
 
 <p className="text-blue-400 font-medium mb-4">
@@ -1539,175 +1838,118 @@ className="w-full flex items-center justify-between p-6 text-left hover:bg-white
 
 </section>
 
-          {/* Fleet */}
-
-          <section id="fleet" className="pb-24">
+<section id="fleet" className="pb-24">
 
 <div className="text-center mb-20">
 
-  <p className="text-blue-400 font-medium mb-4">
-  {translations[lang].fleetText}
-  </p>
+<p className="text-blue-400 font-medium mb-4">
+OUR SERVICES
+</p>
 
-  <h2 className="text-5xl font-bold">
-  {translations[lang].fleetTitle}
-  </h2>
+<h2 className="text-5xl font-bold">
+Complete Moving Solutions
+</h2>
 
 </div>
 
-<div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+<div className="hidden lg:grid lg:grid-cols-3 gap-10">
 
-  {/* Truck 1 */}
-  <div className="bg-white/5 border border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 hover:scale-[1.03] transition duration-300 backdrop-blur-xl">
+{movingServices.map((service,index)=>{
 
-    <img
-      src="https://images.openai.com/static-rsc-4/fFEcfEEuBx9kuKntZdTLowgcNsZ6aAwraRHJDdjdl18ma3arEyfU_DbDT0TzQEbOKRslqszbt-024Se_KV2wnyz_0llhwXMhElK_f0tanAiOzUWnytBBbBKC0BW2_fNfq1npblxJ2BF7n3s6C2L6IqIylFZLBHXPqMW_pCRZvm9kSV1yExBSIGLTVEZ09MOv?purpose=fullsize"
-      alt="Moving Service"
-      className="h-72 w-full object-cover"
-    />
+const Icon = service.icon
 
-    <div className="p-8">
+return (
 
-      <h3 className="text-2xl font-bold mb-4">
-      {translations[lang].truck1}
-      </h3>
-
-      <p className="text-gray-400 mb-6">
-      {translations[lang].truck1Text}
-      </p>
-
-      <div className="flex justify-between text-gray-300 mb-8">
-        <span>12m³</span>
-        <span>{translations[lang].upto2}</span>
-      </div>
-
-      <button
-  onClick={() => {
-    setTruck("City Moving Van")
-    navigate("/quote")
-  }}
-  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-3 rounded-2xl font-semibold hover:scale-105 transition"
+<div
+key={index}
+className="bg-white/5 border border-white/10 rounded-[32px] p-8 hover:-translate-y-2 transition"
 >
-      {translations[lang].orderTruck}
-      </button>
 
-    </div>
+<div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/10 flex items-center justify-center mb-6">
 
-  </div>
-
-  {/* Truck 2 */}
-  <div className="bg-white/5 border border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 hover:scale-[1.03] transition duration-300 backdrop-blur-xl">
-
-    <img
-      src="https://images.openai.com/static-rsc-4/ctMdBouCd_cvx0JkXnXTlAQ9jz-x-x2915TNO7OEC3w1uYKhSsmpA9eXpWrmbK2hWZuUAAAESQN4YiUubjW80CjrsnGyI238FVrH8nEAzbbFC3oAubVKcy49jepHictBa_6X8hNBmcN4tTh0UXr8Bq6SlKsipHp443IYxe2fPF4?purpose=inline"
-      alt="Moving Service"
-      className="h-72 w-full object-cover"
-    />
-
-    <div className="p-8">
-
-      <h3 className="text-2xl font-bold mb-4">
-      {translations[lang].truck2}
-      </h3>
-
-      <p className="text-gray-400 mb-6">
-      {translations[lang].truck2Text}
-      </p>
-
-      <div className="flex justify-between text-gray-300 mb-8">
-        <span>18m³</span>
-        <span>{translations[lang].upto3}</span>
-      </div>
-
-      <button
-  onClick={() => {
-    setTruck("Business Cargo Van")
-    navigate("/quote")
-  }}
-  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-3 rounded-2xl font-semibold hover:scale-105 transition"
->
-      {translations[lang].orderTruck}
-      </button>
-
-    </div>
-
-  </div>
-
-  {/* Truck 3 */}
-  <div className="bg-white/5 border border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 hover:scale-[1.03] transition duration-300 backdrop-blur-xl">
-
-    <img
-      src="https://images.openai.com/static-rsc-4/30KRSfyrOm1CTVVVgThQ0eWug96y7cdy3Ej3MbWiPWBLj7aG7YPwfQL-2bbC17azRajJ2lqziKwRrSV_KWeuuptVnOf6p_jcgGNVLjsuXMpWeKVLxhNJ0FZdHL2qaLKUVzbfMuN3z43GbFntFEUL6iCs4TdF7n5oQv27bL94dQHRyE-DhKiLAxGaAHjO5T-D?purpose=fullsize"
-      alt="Moving Service"
-      className="h-72 w-full object-cover"
-    />
-
-    <div className="p-8">
-
-      <h3 className="text-2xl font-bold mb-4">
-      {translations[lang].truck3}
-      </h3>
-
-      <p className="text-gray-400 mb-6">
-      {translations[lang].truck3Text}
-      </p>
-
-      <div className="flex justify-between text-gray-300 mb-8">
-        <span>8m³</span>
-        <span>{translations[lang].upto1}</span>
-      </div>
-
-      <button
-  onClick={() => {
-    setTruck("Mini Truck")
-    navigate("/quote")
-  }}
-  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-3 rounded-2xl font-semibold hover:scale-105 transition"
->
-      {translations[lang].orderTruck}
-      </button>
-
-    </div>
-
-  </div>
-
-    {/* Truck 4 */}
-    <div className="bg-white/5 border border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 hover:scale-[1.03] transition duration-300 backdrop-blur-xl">
-
-<img
-  src="https://images.openai.com/static-rsc-4/30KRSfyrOm1CTVVVgThQ0eWug96y7cdy3Ej3MbWiPWBLj7aG7YPwfQL-2bbC17azRajJ2lqziKwRrSV_KWeuuptVnOf6p_jcgGNVLjsuXMpWeKVLxhNJ0FZdHL2qaLKUVzbfMuN3z43GbFntFEUL6iCs4TdF7n5oQv27bL94dQHRyE-DhKiLAxGaAHjO5T-D?purpose=fullsize"
-  alt="Moving Service"
-  className="h-72 w-full object-cover"
+<Icon
+size={32}
+className="text-blue-400"
 />
 
-<div className="p-8">
+</div>
 
-  <h3 className="text-2xl font-bold mb-4">
-  {translations[lang].truck4}
-  </h3>
+<h3 className="text-3xl font-black mb-4">
+{service.title}
+</h3>
 
-  <p className="text-gray-400 mb-6">
-  {translations[lang].truck4Text}
-  </p>
+<p className="text-gray-400 text-lg leading-relaxed">
+{service.text}
+</p>
 
-  <div className="flex justify-between text-gray-300 mb-8">
-    <span>8m³</span>
-    <span>{translations[lang].upto1}</span>
-  </div>
+</div>
 
-  <button
-onClick={() => {
-  setTruck("Piano Moving")
-  navigate("/quote")
-}}
-className="w-full bg-gradient-to-r from-blue-500 to-purple-500 py-3 rounded-2xl font-semibold hover:scale-105 transition"
+)
+
+})}
+
+</div>
+
+<div className="lg:hidden space-y-4">
+
+{movingServices.map((service,index)=>{
+
+const Icon = service.icon
+
+return (
+
+<div
+key={index}
+className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden"
 >
-  {translations[lang].orderTruck}
-  </button>
+
+<button
+onClick={()=>
+setOpenFaq(
+openFaq === index
+? null
+: index
+)
+}
+className="w-full flex justify-between items-center p-5"
+>
+
+<div className="flex items-center gap-4">
+
+<div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/10 flex items-center justify-center">
+
+<Icon
+size={24}
+className="text-blue-400"
+/>
 
 </div>
 
+<h3 className="text-xl font-bold text-left">
+{service.title}
+</h3>
+
 </div>
+
+<div className="text-3xl">
+{openFaq === index ? "−" : "+"}
+</div>
+
+</button>
+
+{openFaq === index && (
+
+<div className="px-5 pb-5 text-gray-400">
+{service.text}
+</div>
+
+)}
+
+</div>
+
+)
+
+})}
 
 </div>
 
